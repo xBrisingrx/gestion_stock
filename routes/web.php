@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
+Route::get('/main', function () {
     return view('content/content');
-});
+})->name('main');
 
 // Rutas para categorias
 Route::get('/category', 'CategoryController@index');
@@ -57,3 +57,9 @@ Route::post('/user/store', 'UserController@store');
 Route::put('/user/update', 'UserController@update');
 Route::put('/user/deactivate', 'UserController@deactivate');
 Route::put('/user/activate', 'UserController@activate');
+
+// Login
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/home', 'HomeController@index')->name('home');
+
